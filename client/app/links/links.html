@@ -1,3 +1,13 @@
-<div id='container'>
-  <!-- Your html here -->
+<div id="container" ng-controller="LinksController">
+  <div class="links" ng-repeat="link in data.links by $index">
+    <div class="link">
+      <img src="/redirect_icon.png">
+      <div class="info">
+        <div class="visits"><span class="count">{{link.visits}}</span>Visits</div>
+        <div class="title">{{link.title}}</div>
+        <div class="original">{{link.baseUrl}}</div>
+        <a href="{{link.url}}">{{link.url}}</a>
+      </div>
+    </div>
+  </div>
 </div>
