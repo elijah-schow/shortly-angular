@@ -1,3 +1,10 @@
+<div class="navigation">
+  <ul>
+    <li><a href="#" class="index selected">All Links</a></li>
+    <li><a href="#/shorten" class="create">Shorten</a></li>
+  </ul>
+  <a href="/logout" class="logout">Logout</a>
+</div>
 <div id="container" >
   <div class="links" ng-controller="LinksController">
     <div class="link" ng-repeat="link in data.links track by $index">
