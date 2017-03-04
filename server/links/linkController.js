@@ -22,10 +22,8 @@ module.exports = {
   newLink: function (req, res, next) {
     var url = req.body.url;
     if (!util.isValidUrl(url)) {
-      return res.status(400).end('Not a valid url');
-      //return next(new Error('Not a valid url'));
+      return next(new Error('Not a valid url'));
     }
-
     findLink({url: url})
       .then(
         function (match) {
@@ -50,7 +48,7 @@ module.exports = {
       })
       .then(function (createdLink) {
         if (createdLink) {
-          res.json(createdLink);
+          res.status(201).json(createdLink);
         }
       })
       .fail(function (error) {

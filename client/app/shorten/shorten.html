@@ -10,21 +10,14 @@
     <form name="shortenForm" ng-submit="addLink(shortenForm.$valid)" novalidate>
       <input
         class="text"
-        type="text"
+        type="url"
         name="url"
         ng-model="link.url"
-        required ng-pattern="/^(?!mailto:)(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))|localhost)(?::\d{2,5})?(?:\/[^\s]*)?$/i"
-        ng-class="{
-            'error': shortenForm.url.$invalid && shortenForm.url.$dirty,
-            'clean': shortenForm.url.$valid || shortenForm.url.$pristine
-          }"
-        ng-change="class = shortenForm.url.$valid ? 'clean' : 'error'">
+        ng-class="{'error': shortenForm.url.$invalid && shortenForm.url.$dirty}">
+        <p class="clear" ng-show="error">{{error}}</p>
       <input type="submit" value="Shorten">
     </form>
-    <img class="spinner" src="/spiffygif_46x46.gif">
+    <img class="spinner" ng-show="loading" src="/spiffygif_46x46.gif">
     <div class="message"></div>
-    <h1 class="clear">{{error}}</h1>
   </div>
 </div>
-
-
