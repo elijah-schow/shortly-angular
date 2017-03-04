@@ -120,15 +120,17 @@ input[type=url]:focus {
 
 
 .error {
-  border: red solid 4px;
+  border: red solid 3px;
   padding: 10px;
   margin: 0 10px;
+  outline: none;
 }
 
 .clean {
-  border: #efe solid 2px;
+  border: #eee solid 3px;
   padding: 10px;
   margin: 0 10px;
+  outline: none;
 }
 
 .creator {
@@ -148,6 +150,10 @@ input[type=url]:focus {
 }
 
 .creator .message {
+  clear: both;
+}
+
+.clear {
   clear: both;
 }
 

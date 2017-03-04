@@ -2,15 +2,20 @@ angular.module('shortly.shorten', [])
 
 .controller('ShortenController', function ($http, $scope, $location, Links) {
   $scope.link = {};
+  $scope.error = '';
 
-  $scope.addLink = function() {
-    return $http({
-      method: 'POST',
-      url: '/api/links',
-      data: $scope.link
-    })
-    .then(function (resp) {
-      return resp;
-    });
+  $scope.addLink = function(isValid) {
+    if (isValid) {
+      return $http({
+        method: 'POST',
+        url: '/api/links',
+        data: $scope.link
+      })
+      .then(function (resp) {
+        return resp;
+      });
+    } else {
+      $scope.error = 'URL is invalid';
+    }
   };
 });

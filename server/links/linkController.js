@@ -22,17 +22,21 @@ module.exports = {
   newLink: function (req, res, next) {
     var url = req.body.url;
     if (!util.isValidUrl(url)) {
-      return next(new Error('Not a valid url'));
+      return res.status(400).end('Not a valid url');
+      //return next(new Error('Not a valid url'));
     }
 
     findLink({url: url})
-      .then(function (match) {
-        if (match) {
-          res.send(match);
-        } else {
-          return util.getUrlTitle(url);
+      .then(
+        function (match) {
+          if (match) {
+            res.send(match);
+          } else {
+            console.log('URL TITLE', url);
+            return util.getUrlTitle(url);
+          }
         }
-      })
+      )
       .then(function (title) {
         if (title) {
           var newLink = {
