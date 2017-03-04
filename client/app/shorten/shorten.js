@@ -6,6 +6,7 @@ angular.module('shortly.shorten', [])
 
   $scope.addLink = function(isValid) {
     if (isValid) {
+      $scope.error = '';
       return $http({
         method: 'POST',
         url: '/api/links',
@@ -13,6 +14,9 @@ angular.module('shortly.shorten', [])
       })
       .then(function (resp) {
         return resp;
+      })
+      .catch(resp => {
+        $scope.error = resp.data.error;
       });
     } else {
       $scope.error = 'URL is invalid';

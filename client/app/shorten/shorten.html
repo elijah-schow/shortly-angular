@@ -18,7 +18,7 @@
             'error': shortenForm.url.$invalid && shortenForm.url.$dirty,
             'clean': shortenForm.url.$valid || shortenForm.url.$pristine
           }"
-        ng-change="class = shortenForm.url.$valid ? 'clean' : 'error'"
+        ng-change="class = shortenForm.url.$valid ? 'clean' : 'error'">
       <input type="submit" value="Shorten">
     </form>
     <img class="spinner" src="/spiffygif_46x46.gif">
