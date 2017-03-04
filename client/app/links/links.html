@@ -6,8 +6,9 @@
   <a href="/logout" class="logout">Logout</a>
 </div>
 <div id="container" >
-  <div class="links" ng-controller="LinksController">
-    <div class="link" ng-repeat="link in data.links track by $index">
+  <div class="links">
+    <input type="text" ng-model="search" placeholder="filter">
+    <div class="link" ng-repeat="link in data.links | filter:search | orderBy: 'created_at'">
       <img src="/redirect_icon.png">
       <div class="info">
         <div class="visits"><span class="count">{{link.visits}}</span>Visits</div>
